@@ -1,0 +1,40 @@
+yaml
+version: '3.4'
+
+services:
+
+    guacd:
+        container_name: guacd
+        image: guacamole/guacd
+        restart: unless-stopped
+        ports:
+            - 4822:4822
+
+    guacamole:
+        container_name: guacamole
+        image: guacamole/guacamole
+        restart: unless-stopped
+        depends_on:
+            - guacd
+            - mysql
+        ports:
+            - "8080:8080"
+        environment:
+            - GUACD_HOSTNAME: guacd
+            - GUACD_PORT: 4822
+            - MYSQL_HOSTNAME: mysql
+            - MYSQL_DATABASE: guacamole_db
+            - MYSQL_USER: guacamole
+            - MYSQL_PASSWORD: password
+            - VIRTUAL_PORT: 8080
+    # - VIRUTAL_HOST: 127.0.0.1
+
+    mysql:
+        container_name: mysql
+        image: mysql
+        restart: unless-stopped
+        environment:
+            - MYSQL_ROOT_PASSWORD: password
+            - MYSQL_DATABASE: guacamole_db
+            - MYSQL_USER: guacamole
+            - MYSQL_PASSWORD: password

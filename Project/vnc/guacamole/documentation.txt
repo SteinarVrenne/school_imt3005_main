@@ -1,0 +1,20 @@
+guacamole/guacd
+
+Provides the guacd daemon, built from the released guacamole-server source with support for VNC, RDP, SSH, telnet, and Kubernetes.
+
+
+
+
+guacamole/guacamole
+
+Provides the Guacamole web application running within Tomcat 8 with support for WebSocket. The configuration necessary to connect to guacd, MySQL, PostgreSQL, LDAP, etc. will be generated automatically when the image starts based on Docker links or environment variables.
+
+
+
+
+mysql or postgresql
+
+Provides the database that Guacamole will use for authentication and storage of connection configuration data.
+
+# Source:
+https://guacamole.apache.org/doc/1.1.0/gug/guacamole-docker.html
