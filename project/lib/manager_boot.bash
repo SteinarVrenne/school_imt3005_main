@@ -17,7 +17,7 @@ if [ "$ret" -ne "0" ]; then # All attempts to download file failed, instruct clo
   exit 1003
 fi
 
- 
+
 dpkg -i "$tempdeb"
 apt-get update
 apt-get -y install puppetserver git pwgen
@@ -74,3 +74,6 @@ mv puppet-dns dns
 /opt/puppetlabs/bin/puppet agent -t # request certificate
 /opt/puppetlabs/bin/puppet agent -t # configure manager
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+
+# Modules
+/opt/puppetlabs/bin/puppet puppet module install puppet-nodejs --version 8.1.0
