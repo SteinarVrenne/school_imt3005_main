@@ -1,2 +1,3 @@
-./project/website/node_modules/
 project\website\node_modules
+./project/website/node_modules
+.DS_Store
