@@ -22,7 +22,7 @@ vncpasswd
 
 export USER=root
 
-tightvncserver :0 -geometry 1550x10201 -depth 16 -pixelformat rgb565
+tightvncserver :0 -geometry 1550x1020 -depth 16 -pixelformat rgb565
 
 apt install net-tools
 
