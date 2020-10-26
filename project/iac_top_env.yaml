@@ -1,10 +1,8 @@
 parameters:
-    key_name: gruppe4key
+    key_name: group4key
     image: Ubuntu Server 18.04 LTS (Bionic Beaver) amd64
-    flavor: m1.small
+    flavor_man: m1.small
+    flavor_rest: m1.tiny
+    flavor_web: t1.small
     public_net: ntnu-internal
-    private_net_name: net1
-    private_net_cidr: 192.168.111.0/24
-    private_net_gateway: 192.168.111.1
-    private_net_pool_start: 192.168.111.200
-    private_net_pool_end: 192.168.111.250
+ 

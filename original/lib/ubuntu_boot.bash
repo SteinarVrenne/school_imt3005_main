@@ -26,6 +26,3 @@ echo "manager_ip_address manager.node.consul manager" >> /etc/hosts
 /opt/puppetlabs/bin/puppet config set server manager.node.consul --section main
 /opt/puppetlabs/bin/puppet config set runinterval 300 --section main
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
-
-# Installing Docker
-apt-get -y install docker 
