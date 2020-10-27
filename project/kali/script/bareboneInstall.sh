@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cp keyboard /etc/default/
-
 apt-get update -y
 echo -e 'yes\n' | apt install base-passwd -y
 apt upgrade -y
@@ -13,30 +11,16 @@ apt-get clean
 
 rm -rf /var/lib/apt/lists/*
 
+# Make a new user, and create a user home folder
 useradd kalikid
 mkhomedir_helper kalikid
 
-# VNC password. Needs to be not hard coded in the future
+#Makes a folder for the vnc password file to be added into later
 mkdir -p /home/kalikid/.vnc"
 chmod go-rwx /home/kalikid/.vnc"
 
-echo -e 'password\npassword\nn' | vncpasswd -f
-
-export USER=root
 
 apt update -y
 
 apt-get install -y net-tools novnc
-
-
-# Runs vns client
-tightvncserver :0 -geometry 1900x940 -depth 16 -pixelformat rgb565
-
-
-#TODO: Make VNC client and server as a service
-
-
-# Runs vnc server
-/usr/share/novnc/utils/launch.sh --listen 5901 --vnc localhost:5900
-
 
