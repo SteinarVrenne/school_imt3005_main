@@ -35,13 +35,14 @@ echo "$(/opt/puppetlabs/bin/facter networking.ip) $(hostname).node.consul $(host
 /opt/puppetlabs/bin/puppet config set autosign true --section master
 /opt/puppetlabs/bin/puppetserver ca setup
 
-# install and configure r10k
+# install and configure r10k 
+# @TODO - Change the main branch of the control repo to production!
 /opt/puppetlabs/bin/puppet module install puppet-r10k
 cat <<EOF > /var/tmp/r10k.pp
 class { 'r10k':
   sources => {
     'puppet' => {
-      'remote'  => 'https://gitlab.com/erikhje/control-repo-a.git',
+      'remote'  => 'https://bitbucket.org/Jimbob21148/control-repo.git',
       'basedir' => '/etc/puppetlabs/code/environments',
       'prefix'  => false,
     },
