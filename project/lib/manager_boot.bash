@@ -78,6 +78,10 @@ mv puppet-dns dns
 
 # Modules
 /opt/puppetlabs/bin/puppet puppet module install puppet-nodejs --version 8.1.0
+puppet module install puppetlabs-puppetdb
+puppet resource package puppetdb ensure=latest
+puppet resource service puppetdb ensure=running enable=true
+
 
 # Apt packages
 apt-get install pdk
