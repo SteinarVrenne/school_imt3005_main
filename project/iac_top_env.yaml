@@ -2,7 +2,7 @@ parameters:
     key_name: group4key
     image: Ubuntu Server 18.04 LTS (Bionic Beaver) amd64
     flavor_man: m1.small
-    flavor_rest: m1.tiny
-    flavor_web: t1.small
+    flavor_rest: m1.large
+    flavor_web: m1.medium
     public_net: ntnu-internal
  
