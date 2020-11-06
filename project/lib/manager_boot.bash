@@ -35,7 +35,7 @@ echo "$(/opt/puppetlabs/bin/facter networking.ip) $(hostname).node.consul $(host
 /opt/puppetlabs/bin/puppet config set autosign true --section master
 /opt/puppetlabs/bin/puppetserver ca setup
 
-# install and configure r10k 
+# install and configure r10k
 # @TODO - Change the main branch of the control repo to production!
 /opt/puppetlabs/bin/puppet module install puppet-r10k
 cat <<EOF > /var/tmp/r10k.pp
@@ -75,9 +75,6 @@ mv puppet-dns dns
 /opt/puppetlabs/bin/puppet agent -t # request certificate
 /opt/puppetlabs/bin/puppet agent -t # configure manager
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
-
-# Modules
-/opt/puppetlabs/bin/puppet puppet module install puppet-nodejs --version 8.1.0
 
 # Apt packages
 apt-get install pdk
