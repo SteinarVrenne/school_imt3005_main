@@ -1,10 +1,9 @@
 #!/bin/bash
 
-server1ip=$(10.212.138.28)
+server1ip=$(openstack server list | grep srv1 | awk '{print $9}')
+containers=$(ssh ubuntu@10.212.136.184 -i gruppe4.pem docker ps  -a | wc -l)
 
-#containers=$(ssh ubuntu@10.212.136.184 -i gruppe4.pem | docker ps  -a | wc -l)
 
-containers=$(ssh ubuntu@10.212.136.184 -i gruppe4.pem | ls -a)
 
 echo $containers
 #if [ $containers -gt 10 ]
