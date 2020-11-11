@@ -12,6 +12,7 @@ pipelines:
           - export DEBIAN_FRONTEND=noninteractive
           - apt update -yq
           - apt install python3-openstackclient -yq
+          - apt install python3-openstacksdk -yq
           - chown 0600 project/gruppe4RC.sh
           - source project/gruppe4RC.sh
           - openstack stack create --dry-run -t project/iac_top.yaml -e project/iac_top_env.yaml project
