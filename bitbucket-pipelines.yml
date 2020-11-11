@@ -9,8 +9,9 @@ pipelines:
     - step:
         name: 'Validation of Heat templates'
         script:
-          - apt update -y
-          - apt install python-openstackclient -y
+          - export DEBIAN_FRONTEND=noninteractive
+          - apt update -yq
+          - apt install python-openstackclient -yq
           - ./project/gruppe4RC.sh
           - openstack stack create --dry-run -t iac_top.yaml -e iac_top_env.yaml project
 
