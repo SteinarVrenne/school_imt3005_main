@@ -12,7 +12,7 @@ pipelines:
           - export DEBIAN_FRONTEND=noninteractive
           - apt update -yq
           - apt install python3-openstackclient -yq
-          - apt install python3-openstacksdk -yq
+          - apt install python3-heatclient -yq
           - chown 0600 project/gruppe4RC.sh
           - source project/gruppe4RC.sh
           - openstack stack list
