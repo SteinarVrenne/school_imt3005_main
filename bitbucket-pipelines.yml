@@ -15,7 +15,6 @@ pipelines:
           - apt install python3-heatclient -yq
           - chown 0600 project/gruppe4RC.sh
           - source project/gruppe4RC.sh
-          - openstack stack list
           - openstack stack create --dry-run -t project/iac_top.yaml -e project/iac_top_env.yaml project
 
 #    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
