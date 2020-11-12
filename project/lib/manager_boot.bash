@@ -76,9 +76,6 @@ mv puppet-dns dns
 /opt/puppetlabs/bin/puppet agent -t # configure manager
 /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
 
-# Apt packages
-apt-get install pdk
-
 # Install openstack client and source our .rc file
 apt install python-openstackclient -y
 # @TODO source rc.sh file so we can contact OpenStack - ported over

@@ -1,7 +1,7 @@
 heat_template_version: 2013-05-23
 
 description: >
-  HOT template to add more hosts to node.consul 
+  HOT template to add more hosts to node.consul
   infrastructure, Note: THIS DEPENDS ON iac_base
 
 parameters:
@@ -47,10 +47,10 @@ resources:
     properties:
           key_name:          { get_param: key_name }
           server_name:       srv1
-          image:             { get_param: image }  
+          image:             { get_param: image }
           flavor:            { get_param: flavor }
-          sec_group_linux:   { get_param: sec_group_linux }  
-          public_net:        { get_param: public_net }  
+          sec_group_linux:   { get_param: sec_group_linux }
+          public_net:        { get_param: public_net }
           admin_net:         { get_param: admin_net }
           admin_subnet:      { get_param: admin_subnet }
           manager_ip:        { get_param: manager_ip }
@@ -59,10 +59,10 @@ resources:
     properties:
           key_name:          { get_param: key_name }
           server_name:       srv2
-          image:             { get_param: image }  
+          image:             { get_param: image }
           flavor:            { get_param: flavor }
-          sec_group_linux:   { get_param: sec_group_linux }  
-          public_net:        { get_param: public_net }  
+          sec_group_linux:   { get_param: sec_group_linux }
+          public_net:        { get_param: public_net }
           admin_net:         { get_param: admin_net }
           admin_subnet:      { get_param: admin_subnet }
           manager_ip:        { get_param: manager_ip }
@@ -71,10 +71,10 @@ resources:
     properties:
           key_name:          { get_param: key_name }
           server_name:       web
-          image:             { get_param: image }  
+          image:             { get_param: image }
           flavor:            { get_param: flavor_web }
-          sec_group_linux:   { get_param: sec_group_linux }  
-          public_net:        { get_param: public_net }  
+          sec_group_linux:   { get_param: sec_group_linux }
+          public_net:        { get_param: public_net }
           admin_net:         { get_param: admin_net }
           admin_subnet:      { get_param: admin_subnet }
           manager_ip:        { get_param: manager_ip }
