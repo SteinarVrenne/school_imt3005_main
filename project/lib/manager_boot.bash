@@ -79,6 +79,13 @@ mv puppet-dns dns
 # Apt packages
 apt-get install pdk
 
+# Install openstack client and source our .rc file
+apt install python-openstackclient -y
+# @TODO source rc.sh file so we can contact OpenStack - ported over
+
+# Script to allow webserver to SSH to manager when a container has been requested
+bash ./add_authorized_key.bash
+
 # Adding openRC file to manager
 echo '#!/usr/bin/env bash
 # To use an OpenStack cloud you need to authenticate against the Identity
@@ -118,3 +125,5 @@ export OS_REGION_NAME="SkyHiGh"
 if [ -z "$OS_REGION_NAME" ]; then unset OS_REGION_NAME; fi
 export OS_INTERFACE=public
 export OS_IDENTITY_API_VERSION=3' > /root/openRC.sh
+
+source /root/openRC.sh

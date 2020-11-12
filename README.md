@@ -9,6 +9,10 @@ git clone https://gitlab.com/erikhje/iac-heat-a.git
 cd iac-heat-a
 openstack stack create my_iac -t iac_top.yaml -e iac_top_env.yaml
 ```
+## Other repositories
+
+Website repository: https://bitbucket.org/SteinarVrenne/website-repo/src
+Control repository: https://bitbucket.org/Jimbob21148/control-repo/src
 
 ## Benchmarking
 
