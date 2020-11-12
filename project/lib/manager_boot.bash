@@ -78,3 +78,10 @@ mv puppet-dns dns
 
 # Apt packages
 apt-get install pdk
+
+# Install openstack client and source our .rc file
+apt install python-openstackclient -y
+# @TODO source rc.sh file so we can contact OpenStack - ported over
+
+# Script to allow webserver to SSH to manager when a container has been requested
+bash ./add_authorized_key.bash
