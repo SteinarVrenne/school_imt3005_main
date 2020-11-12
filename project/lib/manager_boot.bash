@@ -83,8 +83,6 @@ apt-get install pdk
 apt install python-openstackclient -y
 # @TODO source rc.sh file so we can contact OpenStack - ported over
 
-# Script to allow webserver to SSH to manager when a container has been requested
-bash ./add_authorized_key.bash
 
 # Adding openRC file to manager
 echo '#!/usr/bin/env bash
@@ -127,3 +125,6 @@ export OS_INTERFACE=public
 export OS_IDENTITY_API_VERSION=3' > /root/openRC.sh
 
 source /root/openRC.sh
+
+# Script to allow webserver to SSH to manager when a container has been requested
+bash ./add_authorized_key.bash
