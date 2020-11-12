@@ -5,4 +5,3 @@ parameters:
     flavor_rest: m1.large
     flavor_web: m1.medium
     public_net: ntnu-internal
- 

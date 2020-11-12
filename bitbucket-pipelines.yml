@@ -12,8 +12,8 @@ pipelines:
           - export DEBIAN_FRONTEND=noninteractive
           - apt update -yq
           - apt install yamllint -yq
-          - yamllint -c yamlExtention.yaml ./project
-          - yamllint -c yamlExtention.yaml ./project/lib
+          - yamllint -d relaxed ./project
+          - yamllint -d relaxed ./project/lib
 #    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
 #    - step:
 #        name: 'Deployment to Staging'
