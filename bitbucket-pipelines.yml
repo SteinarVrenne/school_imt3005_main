@@ -11,12 +11,9 @@ pipelines:
         script:
           - export DEBIAN_FRONTEND=noninteractive
           - apt update -yq
-          - apt install python3-openstackclient -yq
-          - apt install python3-heatclient -yq
-          - chown 0600 project/gruppe4RC.sh
-          - source project/gruppe4RC.sh
-          - openstack stack create --dry-run -t project/iac_top.yaml -e project/iac_top_env.yaml project
-
+          - apt install yamllint -yq
+          - yamllint ./project
+          - yamllint ./project/lib
 #    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
 #    - step:
 #        name: 'Deployment to Staging'

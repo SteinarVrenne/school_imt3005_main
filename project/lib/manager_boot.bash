@@ -117,4 +117,4 @@ export OS_REGION_NAME="SkyHiGh"
 # Dont leave a blank variable, unset it if it was empty
 if [ -z "$OS_REGION_NAME" ]; then unset OS_REGION_NAME; fi
 export OS_INTERFACE=public
-export OS_IDENTITY_API_VERSION=3' > /root/open.rc
+export OS_IDENTITY_API_VERSION=3' > /root/openRC.sh
