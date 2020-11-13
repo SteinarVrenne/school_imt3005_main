@@ -1,0 +1,16 @@
+REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
+forensics                        latest              8243c67baa6a        13 days ago         4.29GB
+kali                             latest              8243c67baa6a        13 days ago         4.29GB
+pentest                          latest              8243c67baa6a        13 days ago         4.29GB
+stego                            latest              8243c67baa6a        13 days ago         4.29GB
+<none>                           <none>              6b90451a8ea2        13 days ago         4.29GB
+haraldaarz/kali_xfce_vnc_top10   latest              fa6e3fc8774c        13 days ago         4.29GB
+kali_xfce_vnc_top10              latest              fa6e3fc8774c        13 days ago         4.29GB
+kali4                            latest              4af07c8206cb        13 days ago         4.29GB
+kali_xfce_top10_vnc              latest              4af07c8206cb        13 days ago         4.29GB
+<none>                           <none>              583deedcc50e        2 weeks ago         4.29GB
+haraldaarz/kali_xfce_top10       latest              f877a93cc7a1        2 weeks ago         4.29GB
+kali_xfce_top10                  latest              f877a93cc7a1        2 weeks ago         4.29GB
+haraldaarz/kali_xfce_barebone    latest              fe235a0f0989        2 weeks ago         2.17GB
+httpd                            2.4                 3dd970e6b110        4 weeks ago         138MB
+jdkelley/simple-http-server      latest              3d7c84eef542        12 months ago       60MB
