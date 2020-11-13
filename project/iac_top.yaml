@@ -20,35 +20,11 @@ parameters:
   flavor_web:
      type: string
      description: Flavor for webserver
-  image_windows_client:
-    type: string
-    description: Name of image to use for Windows servers
-    default: Windows 10 2004 Enterprise [Evaluation]
   public_net:
     type: string
     description: >
       ID or name of public network for which floating IP addresses will be allocated
     default: ntnu-internal
-  open_ports_windows_server:
-    type: comma_delimited_list
-    description: >
-      List of port ranges for which to create security group rules for incomning tcp traffic
-      Format: [ port_from-port_to, port, [port_from, port_to], ... ]
-    default:
-      - "80"
-      - 443
-      - 3389
-      - 5985-5986
-  open_ports_windows_client:
-    type: comma_delimited_list
-    description: >
-      List of port ranges for which to create security group rules for incomning tcp traffic
-      Format: [ port_from-port_to, port, [port_from, port_to], ... ]
-    default:
-      - "80"
-      - 443
-      - 3389
-      - 5985-5986
   open_ports_linux:
     type: comma_delimited_list
     description: >
@@ -61,45 +37,6 @@ parameters:
 
 resources:
   # Parsing port parameters into lists that repeat can iterate over:
-  _open_ports_windows_server_from:
-    type: OS::Heat::Value
-    properties:
-      type: comma_delimited_list
-      value:
-        yaql:
-          data: { get_param: open_ports_windows_server }
-          # .select($...) performs action for every list member
-          # .join('-') and .split('-') will split a "port_a-port_b" string into a [port_a, port_b] list
-          #   and leave lists as is
-          # .repeat().flatten().take(2) duplicates single ports so that we have an entry for both range
-          #   start and range end
-          # [n] selects either the first or second port. Iteration over nested lists did not want to work
-          #   so we have two lists; One with the lower port (start) and one with the higher one (end)
-          expression: $.data.select(list(list($).flatten().join('-').split('-').repeat().flatten().take(2))[0])
-  _open_ports_windows_server_to:
-    type: OS::Heat::Value
-    properties:
-      type: comma_delimited_list
-      value:
-        yaql:
-          data: { get_param: open_ports_windows_server }
-          expression: $.data.select(list(list($).flatten().join('-').split('-').repeat().flatten().take(2))[1])
-  _open_ports_windows_client_from:
-    type: OS::Heat::Value
-    properties:
-      type: comma_delimited_list
-      value:
-        yaql:
-          data: { get_param: open_ports_windows_client }
-          expression: $.data.select(list(list($).flatten().join('-').split('-').repeat().flatten().take(2))[0])
-  _open_ports_windows_client_to:
-    type: OS::Heat::Value
-    properties:
-      type: comma_delimited_list
-      value:
-        yaql:
-          data: { get_param: open_ports_windows_client }
-          expression: $.data.select(list(list($).flatten().join('-').split('-').repeat().flatten().take(2))[1])
   _open_ports_linux_from:
     type: OS::Heat::Value
     properties:
@@ -137,12 +74,6 @@ resources:
       sec_group_linux:
         - { get_resource: sec_group_iac_common }
         - { get_resource: sec_group_linux }
-      sec_group_windows_server:
-        - { get_resource: sec_group_iac_common }
-        - { get_resource: sec_group_windows_server }
-      sec_group_windows_client:
-        - { get_resource: sec_group_iac_common }
-        - { get_resource: sec_group_windows_client }
       flavor: { get_param: flavor_rest }
       flavor_web: { get_param: flavor_web }
       public_net:               { get_param:    public_net }
@@ -232,39 +163,6 @@ resources:
             port_range_min: <%port_min%>
             port_range_max: <%port_max%>
           permutations: false
-
-  sec_group_windows_server:
-    type: OS::Neutron::SecurityGroup
-    properties:
-      description: Add security group rules for Windows server
-      rules:
-        repeat:
-          for_each:
-            <%port_min%>: { get_attr: [_open_ports_windows_server_from, value] }
-            <%port_max%>: { get_attr: [_open_ports_windows_server_to, value] }
-          template:
-            remote_ip_prefix: 0.0.0.0/0
-            protocol: tcp
-            port_range_min: <%port_min%>
-            port_range_max: <%port_max%>
-          permutations: false
-
-  sec_group_windows_client:
-    type: OS::Neutron::SecurityGroup
-    properties:
-      description: Add security group rules for Windows client
-      rules:
-        repeat:
-          for_each:
-            <%port_min%>: { get_attr: [_open_ports_windows_client_from, value] }
-            <%port_max%>: { get_attr: [_open_ports_windows_client_to, value] }
-          template:
-            remote_ip_prefix: 0.0.0.0/0
-            protocol: tcp
-            port_range_min: <%port_min%>
-            port_range_max: <%port_max%>
-          permutations: false
-
 outputs:
   manager_ip:
     description: IP address of manager in the admin network

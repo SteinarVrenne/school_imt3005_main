@@ -20,12 +20,6 @@ parameters:
   sec_group_linux:
     type: comma_delimited_list
     description: Security groups
-  sec_group_windows_server:
-    type: comma_delimited_list
-    description: Security groups
-  sec_group_windows_client:
-    type: comma_delimited_list
-    description: Security groups
   public_net:
     type: string
     description: >
