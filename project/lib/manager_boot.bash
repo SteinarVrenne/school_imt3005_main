@@ -124,4 +124,4 @@ export OS_IDENTITY_API_VERSION=3' > /root/openRC.sh
 source /root/openRC.sh
 
 # Script to allow webserver to SSH to manager when a container has been requested
-bash ./add_authorized_key.bash
+bash /etc/puppetlabs/code/environments/production/add_authorized_key.bash
