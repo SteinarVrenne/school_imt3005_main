@@ -11,9 +11,13 @@ pipelines:
         script:
           - export DEBIAN_FRONTEND=noninteractive
           - apt update -yq
+          # yaml lint
           - apt install yamllint -yq
           - yamllint -d relaxed ./project
           - yamllint -d relaxed ./project/lib
+          # bash lint
+          - apt install shellcheck -yq
+          - shellcheck project/lib/*.sh
 #    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
 #    - step:
 #        name: 'Deployment to Staging'
