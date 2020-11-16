@@ -121,6 +121,7 @@ if [ -z "$OS_REGION_NAME" ]; then unset OS_REGION_NAME; fi
 export OS_INTERFACE=public
 export OS_IDENTITY_API_VERSION=3' > /root/openRC.sh
 
+# shellcheck source=/root/openRC.sh
 source /root/openRC.sh
 
 # Script to allow webserver to SSH to manager when a container has been requested
