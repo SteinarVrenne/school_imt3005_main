@@ -125,3 +125,6 @@ source /root/openRC.sh
 
 # Script to allow webserver to SSH to manager when a container has been requested
 bash /etc/puppetlabs/code/environments/production/add_authorized_key.bash
+
+# Script adding parameters to host_machine config file
+bash /etc/puppetlabs/code/environments/production/addToConfig.sh
