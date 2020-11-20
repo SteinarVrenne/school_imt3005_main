@@ -5,3 +5,8 @@ parameters:
     flavor_rest: m1.large
     flavor_web: m1.medium
     public_net: ntnu-internal
+    openports_linux:
+      - 22
+      - 80
+      - 443
+      - 25901-25999

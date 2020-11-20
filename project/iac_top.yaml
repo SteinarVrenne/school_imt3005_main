@@ -163,8 +163,6 @@ resources:
             port_range_min: <%port_min%>
             port_range_max: <%port_max%>
           permutations: false
-        # Ingress VNC machines 25901-25999
-        - { remote_ip_prefix: 0.0.0.0/0, direction: ingress, protocol: tcp, port_range_min: 25901, port_range_max: 25999}
 outputs:
   manager_ip:
     description: IP address of manager in the admin network
