@@ -127,9 +127,8 @@ source /root/openRC.sh
 # Script to allow webserver to SSH to manager when a container has been requested
 bash /etc/puppetlabs/code/environments/production/add_authorized_key.bash
 
-# Script adding parameters to host_machine config file
-bash /etc/puppetlabs/code/environments/production/addToConfig.sh
+# Script adding parameters to host_machine iac_variables.conf config file
+bash /etc/puppetlabs/code/environments/production/scripts/addToConfig.sh
 
 # Adds manager IP address into host_machine_boot.sh to allow them to use the consul service 
-
 sed -i "s/X.X.X.X/$(facter ipaddress)/" /etc/puppetlabs/code/environments/production/scripts/host_machine_boot.sh
