@@ -130,6 +130,7 @@ bash /etc/puppetlabs/code/environments/production/add_authorized_key.bash
 # Script adding parameters to host_machine config file
 bash /etc/puppetlabs/code/environments/production/addToConfig.sh
 
-# Adds manager IP address into host_machine_boot.sh to allow them to use the consul service 
+# Adds manager IP address into host_machine_boot.sh to allow them to use the consul service
+source /root/.bashrc
 
 sed -i "s/X.X.X.X/$(facter ipaddress)/" /etc/puppetlabs/code/environments/production/scripts/host_machine_boot.sh
