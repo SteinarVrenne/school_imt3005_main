@@ -13,49 +13,8 @@ openstack stack create my_iac -t iac_top.yaml -e iac_top_env.yaml
 ## Other repositories
 
 Website repository: https://bitbucket.org/SteinarVrenne/website-repo/src
+
 Control repository: https://bitbucket.org/Jimbob21148/control-repo/src
-
-## Summary
-
-## Contents
-
-## Introduction
-
-Description of task
-
-## Background technology
-
-Tech used not included in IAC
-
-## Survey of similar projects
-
-Describe similar projects
-
-## Description of work
-
-What did we do?
-
-## Results & Discussion
-
-Does it work?
-What issues did we face?
-What would we include if we had more time / continued to work on it?
-
-## Security aspects
-
-
-
-## Conclusion  
-
-Is it useful?
-
-## References
-
-References / citations
-
-## A Code
-
-
 
 ## Benchmarking
 
